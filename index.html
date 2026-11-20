@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>yubotang8-commits · 可视化图集门牌</title>
+<style>
+  :root{
+    --ink:#1F2328; --sec:#3C4048; --mut:#6B7280; --faint:#8A8F98;
+    --blue:#3B5BDB; --blue-l:#4C6EF5; --blue-f:#EDF2FE;
+    --vio:#9A5AB5; --vio-f:#F3EAF9;
+    --card:#fff; --line:#E3E3DA; --page:#FAFAF7; --base:#F2F2EC;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--page);color:var(--ink);line-height:1.65;padding:40px 20px}
+  .wrap{max-width:880px;margin:0 auto}
+  header h1{font-size:24px;font-weight:700;letter-spacing:.3px}
+  header .sub{font-size:13.5px;color:var(--mut);margin-top:6px}
+  .lead{font-size:14px;color:var(--sec);margin:14px 0 22px}
+  .lead b{color:var(--ink)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px}
+  a.proj{display:block;border:1.5px solid var(--line);border-radius:12px;background:var(--card);padding:16px 18px;text-decoration:none;color:var(--ink);transition:border-color .15s, box-shadow .15s;position:relative}
+  a.proj:hover{border-color:var(--blue-l);box-shadow:0 6px 22px rgba(76,110,245,.14)}
+  a.proj .name{font-size:16.5px;font-weight:700}
+  a.proj .name .badge{display:inline-block;font-size:10.5px;font-weight:700;color:#fff;background:var(--blue-l);border-radius:5px;padding:1px 7px;margin-left:8px;vertical-align:2px}
+  a.proj .url{font-family:Consolas,'Cascadia Mono',monospace;font-size:12px;color:var(--blue);margin-top:3px}
+  a.proj .desc{font-size:12.5px;color:var(--mut);margin-top:9px;line-height:1.7}
+  a.proj .desc b{color:var(--sec)}
+  a.proj .meta{font-size:11px;color:var(--faint);margin-top:9px}
+  a.proj.vio:hover{border-color:var(--vio);box-shadow:0 6px 22px rgba(154,90,181,.16)}
+  a.proj .goto{position:absolute;right:16px;top:16px;font-size:12.5px;color:var(--faint);font-weight:600}
+  a.proj:hover .goto{color:var(--blue-l)}
+  footer{margin-top:26px;font-size:11.5px;color:var(--faint);line-height:1.8}
+  footer code{font-family:Consolas,monospace;background:var(--base);border:1px solid var(--line);border-radius:4px;padding:0 5px;font-size:11px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>yubotang8-commits · 可视化图集门牌</h1>
+  <div class="sub">源码架构图解集散地 —— 每个项目都是一次「把大代码库变成一眼看懂的图」的尝试</div>
+</header>
+
+<p class="lead">图集都由 Claude Code 对源码做<b>只读深读取证</b>后逐页绘制：组件架构图讲「组成」、动态播放页讲「过程」（可播放/单步/故障注入）、静态流程图讲「结构」。点卡片进入。</p>
+
+<div class="grid">
+  <a class="proj" href="https://yubotang8-commits.github.io/icode-arch/">
+    <span class="goto">进入 →</span>
+    <div class="name">iCode-arch<span class="badge">最新</span></div>
+    <div class="url">/icode-arch/</div>
+    <div class="desc">iCode（内部代号 chrys）架构图集：五层架构 <b>app → orchestration → service → kernel → foundation</b>，13 个组件 50 页——含「一次用户回合从按键到落盘 30 步」全链路旗舰播放器。对 37.9 万行 Python 的图解。</div>
+    <div class="meta">2026-11 · 12 架构图 / 22 动态播放器 / 16 静态图 · 源码 github.com/openJiuwen-ai/iCode</div>
+  </a>
+  <a class="proj vio" href="https://yubotang8-commits.github.io/claude-code-graph/">
+    <span class="goto">进入 →</span>
+    <div class="name">claude-code-graph</div>
+    <div class="url">/claude-code-graph/</div>
+    <div class="desc">Claude Code 全图解：9 大子系统 <b>24 个组件</b> + 41 张流程图 + 总览导航；含 SSE 流式协议专题播放页。对逆向重打包的 Claude Code（约 140 万行 JS）的图解。</div>
+    <div class="meta">2026-11 · 组件架构图 + 静态/动态流程图 · 用户标杆页：05-api-request/sse-stream.html</div>
+  </a>
+</div>
+
+<footer>
+  以后每做一个新图集，在本仓库 <code>index.html</code> 加一张卡片即可。<br>
+  各图集均为单文件零依赖 HTML，源仓库只读取证、file:line 级证据保留在各页「深入细节」折叠区。
+</footer>
+</div>
+</body>
+</html>
