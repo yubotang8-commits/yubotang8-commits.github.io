@@ -79,10 +79,11 @@
   .chip i.b1{background:var(--blue-l)} .chip i.b2{background:#7FA3F0}
   .chip i.v1{background:var(--vio)}   .chip i.v2{background:#C99BDD}
 
-  .meta{font-size:11px;color:var(--faint);margin-top:auto;padding-top:13px;border-top:1px dashed var(--line)}
+  .meta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;margin-top:auto;padding-top:13px;border-top:1px dashed var(--line)}
+  .meta{font-size:11px;color:var(--faint);line-height:1.7;min-width:0}
   .meta code{font-family:Consolas,monospace;font-size:10.5px;background:var(--base);border-radius:4px;padding:0 4px}
 
-  .go{position:absolute;right:20px;bottom:44px;font-size:12.5px;font-weight:700;color:var(--faint);transition:color .15s, transform .15s}
+  .go{flex:0 0 auto;font-size:12.5px;font-weight:700;color:var(--faint);transition:color .15s, transform .15s}
   a.proj.b:hover .go{color:var(--blue-l);transform:translateX(3px)}
   a.proj.v:hover .go{color:var(--vio-l);transform:translateX(3px)}
 
@@ -90,7 +91,7 @@
   footer code{font-family:Consolas,monospace;background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:4px;padding:0 5px;font-size:10.5px}
 
   @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-  @media (max-width:480px){.hero h1{font-size:24px}.grid{grid-template-columns:1fr}.go{display:none}}
+  @media (max-width:480px){.hero h1{font-size:24px}.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -135,8 +136,10 @@
       <span class="chip"><i class="b2"></i>22 动态播放页</span>
       <span class="chip"><i class="b1"></i>16 静态流程图</span>
     </div>
-    <div class="meta">源仓库 <code>github.com/openJiuwen-ai/iCode</code> · 只读深读取证</div>
-    <span class="go">进入 →</span>
+    <div class="meta-row">
+      <div class="meta">源仓库 <code>github.com/openJiuwen-ai/iCode</code> · 只读深读取证</div>
+      <span class="go">进入 →</span>
+    </div>
   </a>
 
   <a class="proj v" href="https://yubotang8-commits.github.io/claude-code-graph/">
@@ -162,8 +165,10 @@
       <span class="chip"><i class="v2"></i>41 流程图</span>
       <span class="chip"><i class="v1"></i>SSE 流式专题</span>
     </div>
-    <div class="meta">2026-11 · 源仓库为逆向重打包的 Claude Code（只读分析）</div>
-    <span class="go">进入 →</span>
+    <div class="meta-row">
+      <div class="meta">2026-11 · 源仓库为逆向重打包的 Claude Code（只读分析）</div>
+      <span class="go">进入 →</span>
+    </div>
   </a>
 
 </section>
