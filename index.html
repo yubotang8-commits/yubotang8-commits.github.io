@@ -7,78 +7,132 @@
 <style>
   :root{
     --ink:#1F2328; --sec:#3C4048; --mut:#6B7280; --faint:#9AA1AC;
-    --blue:#3B5BDB; --vio:#7C3A99;
-    --line:#E3E3DA; --page:#FAFAF7;
+    --blue:#3B5BDB; --blue-2:#4C6EF5;
+    --vio:#7C3A99; --vio-2:#9A5AB5;
+    --line:#DED9CC; --paper:#FAF9F5; --plate:#FFFDF9;
     --mono:Consolas,'Cascadia Mono','Microsoft YaHei',monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--page);color:var(--ink);line-height:1.7}
-  .wrap{max-width:660px;margin:0 auto;padding:28px 24px 48px}
+  body{font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--paper);color:var(--ink);line-height:1.72}
+  .wrap{max-width:780px;margin:0 auto;padding:30px 26px 52px}
 
-  .top{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--line)}
-  .top .host{font-family:var(--mono);font-size:12px;color:var(--faint)}
-  .top a{font-size:12px;color:var(--mut);text-decoration:none}
-  .top a:hover{color:var(--blue);text-decoration:underline}
+  /* ---- 报头 ---- */
+  .over{font-family:var(--mono);font-size:11px;letter-spacing:2.5px;color:var(--faint)}
+  .titlerow{display:flex;align-items:baseline;justify-content:space-between;margin-top:6px}
+  h1{font-size:30px;font-weight:800;letter-spacing:3px}
+  .vol{font-family:var(--mono);font-size:11px;color:var(--faint);white-space:nowrap}
+  .rule2{height:6px;border-top:1.5px solid var(--ink);border-bottom:1px solid var(--line);margin-top:14px}
+  .intro{font-size:13px;color:var(--mut);margin:13px 0 4px}
+  .intro b{color:var(--sec);font-weight:600}
 
-  h1{font-size:21px;font-weight:700;margin:34px 0 6px;letter-spacing:.5px}
-  .intro{font-size:13.5px;color:var(--mut);margin-bottom:28px}
+  /* ---- 图版行 ---- */
+  .plates{margin-top:10px}
+  a.plate{display:flex;gap:24px;padding:26px 2px 22px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
 
-  .list{border-top:1px solid var(--line)}
-  .row{display:block;padding:18px 2px 16px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
-  .row:hover .name{color:var(--blue);text-decoration:underline}
+  .fig{flex:0 0 auto;width:98px;text-align:center}
+  .fig .frame{border:1px solid var(--line);background:var(--plate);padding:11px 9px;border-radius:2px;transition:border-color .15s}
+  .fig .cap{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:7px;letter-spacing:1px}
 
-  .row .first{display:flex;align-items:baseline;gap:10px}
-  .row .num{font-family:var(--mono);font-size:12px;color:var(--faint)}
-  .row .name{font-size:16px;font-weight:700;color:var(--ink)}
-  .row .when{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--faint)}
+  .body{flex:1;min-width:0}
+  .namerow{display:flex;align-items:baseline;gap:10px}
+  .name{font-size:18.5px;font-weight:800;letter-spacing:.3px}
+  .when{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--faint);white-space:nowrap}
+  .desc{font-size:13px;color:var(--mut);margin-top:6px}
+  .desc b{color:var(--sec);font-weight:600}
+  .stats{font-size:12px;font-weight:600;color:var(--sec);margin-top:9px;letter-spacing:.2px}
+  .lnk{font-family:var(--mono);font-size:12px;color:var(--mut);margin-top:6px}
+  .lnk::before{content:"→ "}
 
-  .row .desc{font-size:13px;color:var(--mut);margin-top:7px;padding-left:0}
-  .row .desc b{color:var(--sec);font-weight:600}
-  .row .lnk{font-family:var(--mono);font-size:12px;color:var(--mut);margin-top:6px}
-  .row:hover .lnk{color:var(--blue)}
+  a.plate.b:hover .name{color:var(--blue);text-decoration:underline}
+  a.plate.b:hover .lnk{color:var(--blue)}
+  a.plate.b:hover .frame{border-color:var(--blue-2)}
+  a.plate.v:hover .name{color:var(--vio);text-decoration:underline}
+  a.plate.v:hover .lnk{color:var(--vio)}
+  a.plate.v:hover .frame{border-color:var(--vio-2)}
 
-  .foot{font-size:11.5px;color:var(--faint);margin-top:26px;line-height:1.9}
+  /* ---- 页脚 ---- */
+  .foot{display:flex;justify-content:space-between;gap:16px;margin-top:22px;font-size:11.5px;color:var(--faint)}
   .foot code{font-family:var(--mono);font-size:10.5px}
+
+  @media (max-width:560px){
+    h1{font-size:24px;letter-spacing:2px}
+    a.plate{gap:16px;padding:20px 0 16px}
+    .fig{width:80px}
+    .fig .frame{padding:8px 6px}
+    .fig .frame svg{width:46px;height:46px}
+    .foot{flex-direction:column;gap:4px}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<div class="top">
-  <span class="host">yubotang8-commits.github.io</span>
-  <a href="https://github.com/yubotang8-commits">github.com/yubotang8-commits</a>
+<div class="over">YUBOTANG8-COMMITS · GITHUB PAGES</div>
+<div class="titlerow">
+  <h1>图集门牌</h1>
+  <span class="vol">共 2 册 · 2026-11</span>
 </div>
+<div class="rule2"></div>
+<p class="intro">两个公开的源码图解项目：对一个大代码库做<b>只读深读取证</b>，再逐页画成组件架构图、可播放流程页与静态图。单文件零依赖，点开即看。</p>
 
-<h1>图集门牌</h1>
-<p class="intro">两个公开的源码图解项目。每个都是对一个大代码库做只读深读后逐页画出来的：组件架构图、可播放的流程页、静态图，单文件零依赖，点开即看。</p>
+<div class="plates">
 
-<div class="list">
-
-  <a class="row" href="https://yubotang8-commits.github.io/icode-arch/">
-    <div class="first">
-      <span class="num">01</span>
-      <span class="name">iCode-arch</span>
-      <span class="when">2026-11</span>
+  <a class="plate b" href="https://yubotang8-commits.github.io/icode-arch/">
+    <div class="fig">
+      <div class="frame">
+        <svg width="58" height="58" viewBox="0 0 46 46">
+          <rect x="7" y="5"  width="32" height="6.5" rx="1.5" fill="#EDF2FE" stroke="#4C6EF5" stroke-width="1.1"/>
+          <rect x="7" y="14.5" width="32" height="6.5" rx="1.5" fill="#DDE7FC" stroke="#4C6EF5" stroke-width="1.1"/>
+          <rect x="7" y="24" width="32" height="6.5" rx="1.5" fill="#C9D8FA" stroke="#4C6EF5" stroke-width="1.1"/>
+          <rect x="7" y="33.5" width="32" height="6.5" rx="1.5" fill="#AEC3F7" stroke="#4C6EF5" stroke-width="1.1"/>
+          <line x1="41.5" y1="5" x2="41.5" y2="40" stroke="#4C6EF5" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M39.2,7.2 L41.5,5 L43.8,7.2" stroke="#4C6EF5" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="cap">图 01</div>
     </div>
-    <p class="desc">iCode（内部代号 chrys）架构图集。五层架构 app → orchestration → service → kernel → foundation，<b>13 个组件 50 页</b>，旗舰页是「一次用户回合从按键到落盘」30 步全链路播放器。源码 37.9 万行 Python。</p>
-    <p class="lnk">yubotang8-commits.github.io/icode-arch/</p>
+    <div class="body">
+      <div class="namerow">
+        <span class="name">iCode-arch</span>
+        <span class="when">2026-11</span>
+      </div>
+      <p class="desc">iCode（内部代号 chrys）架构图集：五层架构 <b>app → orchestration → service → kernel → foundation</b>；旗舰页是「一次用户回合从按键到落盘」30 步全链路播放器。源码 37.9 万行 Python。</p>
+      <p class="stats">13 组件 · 12 架构图 · 22 动态播放页 · 16 静态图</p>
+      <p class="lnk">yubotang8-commits.github.io/icode-arch/</p>
+    </div>
   </a>
 
-  <a class="row" href="https://yubotang8-commits.github.io/claude-code-graph/">
-    <div class="first">
-      <span class="num">02</span>
-      <span class="name">claude-code-graph</span>
-      <span class="when">2026-11</span>
+  <a class="plate v" href="https://yubotang8-commits.github.io/claude-code-graph/">
+    <div class="fig">
+      <div class="frame">
+        <svg width="58" height="58" viewBox="0 0 46 46">
+          <circle cx="12" cy="11" r="4.6" fill="#F6EDFA" stroke="#9A5AB5" stroke-width="1.2"/>
+          <circle cx="30" cy="8.5" r="3.6" fill="#F6EDFA" stroke="#9A5AB5" stroke-width="1.2"/>
+          <circle cx="36" cy="23" r="4.2" fill="#EDDDF5" stroke="#9A5AB5" stroke-width="1.2"/>
+          <circle cx="16" cy="27" r="3.6" fill="#F6EDFA" stroke="#9A5AB5" stroke-width="1.2"/>
+          <circle cx="26" cy="38" r="3.2" fill="#EDDDF5" stroke="#9A5AB5" stroke-width="1.2"/>
+          <path d="M15.6,13.8 L27.2,9.8 M33.2,11.8 L35,18.9 M32.3,25.5 L19.2,26.8 M19.5,29.4 L24.2,35.4 M29.6,25.8 L26.9,35.1" stroke="#C9A9DB" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="cap">图 02</div>
     </div>
-    <p class="desc">Claude Code 全图解。9 大子系统 <b>24 个组件、41 张流程图</b>，含 SSE 流式协议专题播放页。对象是逆向重打包的 Claude Code。</p>
-    <p class="lnk">yubotang8-commits.github.io/claude-code-graph/</p>
+    <div class="body">
+      <div class="namerow">
+        <span class="name">claude-code-graph</span>
+        <span class="when">2026-11</span>
+      </div>
+      <p class="desc">Claude Code 全图解：9 大子系统 24 个组件，含 SSE 流式协议专题播放页。对象是逆向重打包的 Claude Code。</p>
+      <p class="stats">24 组件架构图 · 41 流程图 · SSE 流式专题</p>
+      <p class="lnk">yubotang8-commits.github.io/claude-code-graph/</p>
+    </div>
   </a>
 
 </div>
 
-<p class="foot">
-  以后新图集做完，在 <code>index.html</code> 加一行。各图集的 file:line 级证据在各页「深入细节」折叠区。
-</p>
+<div class="foot">
+  <span>以后新图集做完，在本仓库 <code>index.html</code> 加一版。</span>
+  <span>file:line 级证据在各册「深入细节」折叠区</span>
+</div>
 
 </div>
 </body>
